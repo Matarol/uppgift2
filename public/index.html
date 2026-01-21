@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>My Gr8 Todo App</title>
 </head>
 <body>
-    <h1>My Gr8 Todo App</h1>
+    <h1>My Gr8, but simple, Todo App</h1>
 
-    <ul id="todoList"></ul>
-
-    <input type="text" id="taskInput" placeholder="Enter new task here">
-
-    <button id="addTaskBtn">Add task</button>
+    <form id="todoForm">
+        <input type="text" id="todoInput" placeholder="New Todo" required>
+        <button type="submit">Add Todo</button>
+    </form>
+    <h2>Todo's:</h2>
+    <div class="todoContainer">
+        <ul id="todoList">
+            <!-- Todo items will be dynamically listed here -->
+        </ul>
+    </div>
     
     <script src="./app.js"></script>
 </body>

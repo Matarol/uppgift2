@@ -8,16 +8,29 @@ router.get('/', (req, res) => {
     res.json(todos);
 });
 
-router.post('/add', (req, res) => {
+router.post('/', (req, res) => {
     const { task } = req.body;
-    if (task) {
-        const newTodo = { id: todos.length + 1, task};
-        todos.push(newTodo);
-        res.status(201).json(newTodo);
+    if (!task) {
+        return res.status(400).send('Task is required');
     }
-    else {
-        res.status(400).send('Task is required');
+               
+    const newTodo = { id: Date.now(), task, completed: false};
+    todos.push(newTodo);
+
+    res.status(201).json(newTodo);    
+    
+});
+
+router.patch('/:id', (req, res) => {
+    const id = parseInt(req.params.id);
+    const todo = todos.find(t => t.id === id);
+
+    if (!todo) {
+        return res.status(404).send('Todo not found')
     }
+
+    todo.completed = !todo.completed;
+    res.json(todo);
 });
 
 router.delete('/:id', (req, res) => {
