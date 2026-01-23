@@ -1,5 +1,6 @@
 ﻿const express = require('express');
 const todoRoutes = require('./routes/todoRoutes');
+const { loadTodos } = require('./todoStore');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,7 +14,10 @@ app.use(express.static('public'));
 //Set up routes
 app.use('/todos', todoRoutes);
 
-// Start the server
-app.listen(PORT, () => {
+// Starta server efter att todos har laddats från fil
+(async () => {
+  await loadTodos();
+  app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
-});
+  });
+})();
