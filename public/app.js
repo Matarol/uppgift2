@@ -15,7 +15,7 @@ async function fetchTodos() {
         checkbox.type = 'checkbox';
         checkbox.checked = todo.completed;
         checkbox.classList.add('todo-checkbox');
-        checkbox.addEventListener('change', () => toggleTodo(todo.id));
+        checkbox.addEventListener('change', () => toggleTodo(todo._id));
 
         //text
         const span = document.createElement('span');
@@ -30,7 +30,7 @@ async function fetchTodos() {
         const deleteBtn = document.createElement('button');
         deleteBtn.innerHTML = '<i class="fa-solid fa-trash"></i>';
         deleteBtn.classList.add('delete-btn');
-        deleteBtn.addEventListener('click', () => deleteTodo(todo.id));
+        deleteBtn.addEventListener('click', () => deleteTodo(todo._id));
         
         li.appendChild(checkbox);
         li.appendChild(span);
