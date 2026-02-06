@@ -9,6 +9,30 @@
     margin-top: 50px;
     }
 
+/* Suddig bakgrund */
+.edit-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2); /* Skuggar bakgrunden något */
+    backdrop-filter: blur(5px);    /* Skapar suddigheten */
+    z-index: 999;                  /* Högt z-index för att säkra att overlay är över alla andra element */
+}
+
+/* Input-elementet som blir uppdaterat */
+.edit-input.editing-mode {
+    position: relative;            /* Position: Relative ett måste för att z-index ska fungera */
+    z-index: 1000;                 /* Högre än overlay för att inte bli suddig */
+    outline: none;
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 15px;
+    background: white;             /* Förhindrar att input-fältet blir genomskinligt */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4); /* Snygg skuggeffekt som gör input-elementet lite tydligare */
+}
+
 h1 {
     text-align: center;
 }
